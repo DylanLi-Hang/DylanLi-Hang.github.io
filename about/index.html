@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>扫描线法&amp;CityGame题解 · Dylan Li&#39;s Blog</title>
+    <title>About Myself · Dylan Li&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,7 +203,7 @@
 </head>
 
     
-        <body class="post-body">
+        <body class="about-body">
     
     
 <header class="header">
@@ -211,15 +211,6 @@
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >Dylan Li&#39;s Blog.</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">扫描线法&CityGame题解</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>Dylan Li's Blog.</a>
 </header>
@@ -238,61 +229,23 @@ height:50vh;
     <!-- 主页  -->
     
     
-    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/about-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            扫描线法&CityGame题解
-            <!-- 404 -->
+            About Myself
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-            <!-- 404 -->
-            
         </p>
         <!-- 文章页meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
-                
-                
-                    <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">271</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
-                    </div>
-                
-                <div class="post-intro-meta">
-                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/07/21</span>
-                    
-                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                        <span class="iconfont-archer">&#xe602;</span>
-                        <span id="busuanzi_value_page_pv"></span>
-                    </span>
-                    
-                    <span class="shareWrapper">
-                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                        <span class="shareText">Share</span>
-                        <ul class="shareList">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
         
     </div>
 </div>
@@ -393,64 +346,12 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main post-page">
+            <!-- 不可以删除，否则会调用post的layout  -->
+<main class="main about-page">
     <article class="article-entry">
-        <h2 id="近日更新敬请期待！"><a href="#近日更新敬请期待！" class="headerlink" title="近日更新敬请期待！"></a>近日更新敬请期待！</h2><p><img src="https://s2.ax1x.com/2019/07/21/eCSLEd.jpg" alt="eCSLEd.jpg"></p>
-<h2 id="City-Game"><a href="#City-Game" class="headerlink" title="City Game"></a>City Game</h2><blockquote>
-<p><code>Description</code></p>
-<p>这片城市土地被分成 N*M 个格子，每个格子里写着 ‘R’ 或者 ‘F’ ， R 代表这块土地被赐予了 rainbow ， F 代表这块土地被赐予了 freda 。</p>
-<p>现在 freda 要在这里卖萌。。。它要找一块矩形土地，要求这片土地都标着 ‘F’ 并且面积最大。 但是 rainbow 和 freda 的 OI 水平都弱爆了，找不出这块土地，而蓝兔也想看 freda 卖萌（她显然是 不会编程的……），所以它们决定，如果你找到的土地面积为 S ，它们每人给你 3*S 两银子。</p>
-<p><code>Input</code></p>
-<p>第一行两个整数 N,M ，表示矩形土地有 N 行 M 列。</p>
-<p>接下来 N 行，每行 M 个用空格隔开的字符 ‘F’ 或 ‘R’ ，描述了矩形土地。</p>
-<p><code>Output</code></p>
-<p>输出一个整数，表示你能得到多少银子，即 (3* 最大 ‘F’ 矩形土地面积 ) 的值。</p>
-<p> <code>Sample Input</code> </p>
-<p>56</p>
-<p>RFFFFF<br>FFFFFF<br>RRRFFF<br>FFFFFF<br>FFFFFF</p>
-<p><code>Sample Output</code></p>
-<p>45</p>
-<p><code>HINT</code></p>
-<p>对于 50% 的数据， 1&lt;=N,M&lt;=200</p>
-<p>对于 100% 的数据， 1&lt;=N,M&lt;=1000</p>
-</blockquote>
+        <p>ABOUT页面</p>
 
     </article>
-    <!-- license  -->
-    
-    <!-- paginator  -->
-    <ul class="post-paginator">
-        <li class="next">
-            
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2019/07/21/拓朴排序/" title= "拓朴排序">
-                    <div class="nextTitle">拓朴排序</div>
-                </a>
-            
-        </li>
-        <li class="previous">
-            
-                <div class="prevSlogan">Previous Post</div>
-                <a href= "/2019/07/21/高中OI竞赛中STL的使用总结/" title= "高中OI竞赛中STL的使用总结">
-                    <div class="prevTitle">高中OI竞赛中STL的使用总结</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- 评论插件 -->
-    <!-- 来必力City版安装代码 -->
-
-<!-- City版安装代码已完成 -->
-    
-    
-    <!-- partial('_partial/comment/changyan') -->
-    <!--PC版-->
-
-
-    
-    
-
-    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -525,24 +426,6 @@ height:50vh;
 </footer>
     </div>
     <!-- toc -->
-    
-    <div class="toc-wrapper" style=
-    
-
-
-
-
-
-
-
-top:50vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#近日更新敬请期待！"><span class="toc-number">1.</span> <span class="toc-text">近日更新敬请期待！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#City-Game"><span class="toc-number">2.</span> <span class="toc-text">City Game</span></a></li></ol>
-    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -733,8 +616,6 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
-    
-        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
