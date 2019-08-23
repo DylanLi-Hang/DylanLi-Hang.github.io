@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Targan学习 · Dylan Li&#39;s Blog</title>
+    <title>拓扑排序update:P1137旅行计划 · Dylan Li&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >Dylan Li&#39;s Blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Targan学习</a>
+                <a href="#" class="post-name">拓扑排序update:P1137旅行计划</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Targan学习
+            拓扑排序update:P1137旅行计划
             <!-- 404 -->
             
         </h1>
@@ -266,12 +266,12 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">30</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">575</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/07/22</span>
+                    <span class="post-intro-time">2019/08/13</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -395,10 +395,17 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
-<li>dfn[i] ：i号点为被访问到的第几个点</li>
-<li>low[i]：返回到的dfs中的最早的点 </li>
-</ul>
+        <h1 id="拓扑排序专题-DP结合"><a href="#拓扑排序专题-DP结合" class="headerlink" title="拓扑排序专题-DP结合"></a>拓扑排序专题-DP结合</h1><h3 id="P1137-题目描述"><a href="#P1137-题目描述" class="headerlink" title="P1137 题目描述"></a>P1137 题目描述</h3><p>小明要去一个国家旅游。这个国家有<em>N</em>个城市，编号为1至<em>N</em>，并且有<em>M</em>条道路连接着，小明准备从其中一个城市出发，并只往东走到城市i停止。</p>
+<p>所以他就需要选择最先到达的城市，并制定一条路线以城市i为终点，使得线路上除了第一个城市，每个城市都在路线前一个城市东面，并且满足这个前提下还希望游览的城市尽量多。</p>
+<p>现在，你只知道每一条道路所连接的两个城市的相对位置关系，但并不知道所有城市具体的位置。现在对于所有的i，都需要你为小明制定一条路线，并求出以城市i<em>i</em>为终点最多能够游览多少个城市。</p>
+<p>题面描述的<strong>每个城市都在路线前一个城市东面</strong>，可以想到拓扑序</p>
+<blockquote>
+<p>一张有向无环图的拓扑序可以使得任意的起点u,它的一个终点v，在序列中的顺序是u在前v在后</p>
+</blockquote>
+<p>DP需要满足无后效性，而拓扑排序正好可以满足这一点。</p>
+<p>所以DP在拓扑排序之后。dp方程：假设我们的遍历是由u到v，则dp[v]=max(dp[u]+1,dp[v]).（之所以要用max是因为可能有其他城市连接v点）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//P1137</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,t=<span class="number">0</span>,head[<span class="number">100005</span>],dp[<span class="number">100005</span>],inde[<span class="number">100005</span>],outde[<span class="number">100005</span>],sum[<span class="number">100005</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> v,w,nxt;</span><br><span class="line">&#125;e[<span class="number">200005</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    e[++t].v=v;</span><br><span class="line">    e[t].w=w;</span><br><span class="line">    e[t].nxt=head[u];</span><br><span class="line">    head[u]=t;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Topsort</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> nowR=inde[i];</span><br><span class="line">        <span class="keyword">if</span>(nowR==<span class="number">0</span>)&#123;</span><br><span class="line">            q.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> nowR=q.front();q.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=head[nowR];i;i=e[i].nxt)&#123;</span><br><span class="line">            <span class="keyword">int</span> v=e[i].v;</span><br><span class="line">            inde[v]--;</span><br><span class="line">            dp[v]=max(dp[nowR]+<span class="number">1</span>,dp[v]);</span><br><span class="line">            <span class="keyword">if</span>(inde[v]==<span class="number">0</span>)&#123;</span><br><span class="line">                q.push(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> a,b;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);</span><br><span class="line">        addEdge(a,b,<span class="number">1</span>);</span><br><span class="line">        outde[a]++;<span class="comment">//出度</span></span><br><span class="line">        inde[b]++;<span class="comment">//入读</span></span><br><span class="line">    &#125;</span><br><span class="line">    Topsort();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,dp[i]+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
     </article>
     <!-- license  -->
@@ -510,7 +517,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-number">1.</span> <span class="toc-text">定义</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#拓扑排序专题-DP结合"><span class="toc-number">1.</span> <span class="toc-text">拓扑排序专题-DP结合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#P1137-题目描述"><span class="toc-number">1.0.1.</span> <span class="toc-text">P1137 题目描述</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
