@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>拓扑排序 · Dylan Li&#39;s Blog</title>
+    <title>Dylan Li&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,23 +203,12 @@
 </head>
 
     
-        <body class="post-body">
-    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >Dylan Li&#39;s Blog.</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">拓扑排序</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>Dylan Li's Blog.</a>
 </header>
@@ -231,68 +220,24 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/postbg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-            
-            拓扑排序
-            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-            <!-- 404 -->
-            
         </p>
         <!-- 文章页meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
-                
-                
-                    <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.2k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
-                    </div>
-                
-                <div class="post-intro-meta">
-                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/07/26</span>
-                    
-                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                        <span class="iconfont-archer">&#xe602;</span>
-                        <span id="busuanzi_value_page_pv"></span>
-                    </span>
-                    
-                    <span class="shareWrapper">
-                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                        <span class="shareText">Share</span>
-                        <ul class="shareList">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
         
     </div>
 </div>
@@ -393,95 +338,38 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main post-page">
-    <article class="article-entry">
-        <h1 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h1><p>在学校用的的课件PPT：<a href="https://docs.google.com/presentation/d/1SePHLtmt69vrO3Rh0hPBi2NG6ZZdgRxDiCY4n20bt5c/edit?usp=sharing" target="_blank" rel="noopener">https://docs.google.com/presentation/d/1SePHLtmt69vrO3Rh0hPBi2NG6ZZdgRxDiCY4n20bt5c/edit?usp=sharing</a></p>
-<p>拓扑排序目的：</p>
-<p>对有向无环图进行处理，对图上点进行排序，使得图上任意一条有向边(u,v)，在排序后的序列中u出现于v之前。可以解决一些有前置要求的问题或者在DP前处理来保证无后效性。</p>
-<p>举个栗子：</p>
-<p><img src="http://img.blog.csdn.net/20150507001028284" alt="有向无环图"></p>
-<p>示例：它是一个 DAG 图，那么如何写出它的拓扑排序呢？这里说一种比较常用的方法：</p>
-<ol>
-<li>从 DAG 图中选择一个 没有前驱（即入度为0）的顶点并输出。</li>
-<li>从图中删除该顶点和所有以它为起点的有向边。</li>
-<li>重复 1 和 2 直到当前的 DAG 图为空或<strong>当前图中不存在无前驱的顶点为止</strong>。后一种情况说明有向图中必然存在环。</li>
-</ol>
-<p><img src="http://img.blog.csdn.net/20150507001759702" alt="过程"></p>
-<p>于是，得到拓扑排序后的结果是 { 1, 2, 4, 3, 5 }。</p>
-<p>通常，一个有向无环图可以有<strong>一个或多个</strong>拓扑排序序列。</p>
-<p><strong>例子2</strong></p>
-<p><img src="https://s2.ax1x.com/2019/07/26/eu0nVf.png" alt="eu0nVf.png"></p>
-<p><strong><em>条件 :</em></strong>  <strong>对任意一个有向无环图</strong></p>
-<p><img src="https://s2.ax1x.com/2019/07/26/euBQw6.png" alt="euBQw6.png"></p>
-<p>不可使用的情况。具体看了实现方法后会推出矛盾。</p>
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p><strong>wiki</strong></p>
-<p>在计算机科学领域，有向图的拓扑排序是其顶点的线性排序，使得对于从顶点 u 到顶点的每个有向边，在排序中都在之前。</p>
-<p>图形的顶点可以表示要执行的任务，并且边可以表示一个任务必须在另一个任务之前执行的约束；在这个应用中，拓扑排序只是一个有效的任务顺序。</p>
-<ol>
-<li>拓扑排序通常用来“排序”具有依赖关系的任务。</li>
-<li>DP前先进行拓扑排序来保证无后效性</li>
-</ol>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>拓扑排序的实现算法有两种：入度表、DFS，其时间复杂度均为O(V+E)O(V+E)。</p>
-<p><strong>入度表法：</strong></p>
-<p>边表存下每个点的入度</p>
-<p>将入度为0的点入队</p>
-<p>拓扑排序算法主要是循环执行以下两步，直到不存在入度为0的顶点为止。</p>
-<p>(1) 选择一个入度为0的顶点并输出之；</p>
-<p>(2) 从网中删除此顶点及所有出边。</p>
-<p>循环结束后，若输出的顶点数小于网中的顶点数，则输出“有回路”信息，否则输出的顶点序列就是一种拓扑序列。</p>
-<blockquote>
-<p>伪代码</p>
-<p><strong>主函数</strong>{</p>
-<p>存图;</p>
-<p>并记录每个点的入度;</p>
-<p>拓扑排序;</p>
-<p>}</p>
-<p><strong>拓扑排序**</strong>function**{</p>
-<p>创建一个队列</p>
-<p>将目前所有入度为0的点入队</p>
-<p>while(栈不为空)</p>
-<p>{</p>
-<p>​     取出队首顶点 并输出;</p>
-<p>​     弹出队首; 已经出队的顶点数++;</p>
-<p>​     for循环扫一遍</p>
-<p>​        将这个顶点的后继节点入度–;</p>
-<p>​        if(顶点入度为0)</p>
-<p>​             入队;</p>
-<p>}</p>
-<p>if(已经出队的顶点数==总点数)</p>
-<p>​     成功</p>
-<p>}</p>
-</blockquote>
-<h3 id="关于时间复杂度"><a href="#关于时间复杂度" class="headerlink" title="关于时间复杂度"></a>关于时间复杂度</h3><p>如果有n个顶点，e条边，在拓扑排序的过程中，搜索入度为零的顶点所需的时间是O(n)。在正常情况下，每个顶点进一次栈，出一次栈，所需时间O(n)。每个顶点入度减1的运算共执行了e次。所以总的时间复杂为O(n+e)。</p>
-<h2 id="OI题目介绍"><a href="#OI题目介绍" class="headerlink" title="OI题目介绍"></a>OI题目介绍</h2><p>最基础的模板：<br>UVA10305 给任务排序 Ordering Tasks<br><a href="https://www.luogu.org/problem/UVA10305" target="_blank" rel="noopener">https://www.luogu.org/problem/UVA10305</a><br>没有账号的同学可以去： <a href="https://vjudge.net/problem/UVA-10305" target="_blank" rel="noopener">https://vjudge.net/problem/UVA-10305</a> 提交</p>
-<p>需要处理一点点的拓扑排序：（还是几乎是模板）<br>P1038神经网络<br><a href="https://www.luogu.org/problem/P1038" target="_blank" rel="noopener">https://www.luogu.org/problem/P1038</a></p>
-<p>拓扑排序保证无后效性+简单动规：<br>P1137 旅行计划<br><a href="https://www.luogu.org/problem/P1137" target="_blank" rel="noopener">https://www.luogu.org/problem/P1137</a></p>
-<p>可以用拓扑排序解决的：<br>P1983 车站分级<br><a href="https://www.luogu.org/problem/P1983" target="_blank" rel="noopener">https://www.luogu.org/problem/P1983</a></p>
-<p>UVA10305题解：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//UVA10305</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m)&amp;&amp;n!=<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;G(n+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> a,b,inDegree[n+<span class="number">1</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">while</span>(m--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);</span><br><span class="line">            G[a].push_back(b);</span><br><span class="line">            ++inDegree[b];<span class="comment">//递增结点的入度</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q;<span class="comment">//储存入度为零的结点</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)<span class="comment">//将入度为零的结点放入队列中</span></span><br><span class="line">            <span class="keyword">if</span>(inDegree[i]==<span class="number">0</span>)</span><br><span class="line">                q.push(i);</span><br><span class="line">        <span class="keyword">while</span>(!q.empty())&#123;<span class="comment">//队列不空</span></span><br><span class="line">            <span class="keyword">int</span> p=q.front();<span class="comment">//弹出队首结点</span></span><br><span class="line">            q.pop();</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>,p);<span class="comment">//输出该结点</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i:G[p])<span class="comment">//遍历该结点能到达的结点</span></span><br><span class="line">                <span class="keyword">if</span>(--inDegree[i]==<span class="number">0</span>)<span class="comment">//减少能到达结点的入度，如果入度为零</span></span><br><span class="line">                    q.push(i);<span class="comment">//压入队列</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">for(int i:a)</span></span><br><span class="line"><span class="comment">相当于 "for each" -- 对 数组 a 的每个元素的值，一个一个地用来循环。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-
+            <main class="main index-page">
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/07/20/The-First-Blog/" >
+            
+                <span>The First Blog!</span>
+        </a>
+        <div class="abstract-content">
+            THE DAY THIS BLOG WAS CREATED
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/20</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
     </article>
-    <!-- license  -->
     
     <!-- paginator  -->
     
-    <!-- 评论插件 -->
-    <!-- 来必力City版安装代码 -->
-
-<!-- City版安装代码已完成 -->
+    <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/archives/">&#60; PREV</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+    </nav>
     
-    
-    <!-- partial('_partial/comment/changyan') -->
-    <!--PC版-->
-
-
-    
-    
-
-    <!-- 评论 -->
 </main>
-
             <!-- profile -->
             
         </div>
@@ -555,24 +443,6 @@ height:50vh;
 </footer>
     </div>
     <!-- toc -->
-    
-    <div class="toc-wrapper" style=
-    
-
-
-
-
-
-
-
-top:50vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#拓扑排序"><span class="toc-number">1.</span> <span class="toc-text">拓扑排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#应用"><span class="toc-number">1.1.</span> <span class="toc-text">应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-number">1.2.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于时间复杂度"><span class="toc-number">1.2.1.</span> <span class="toc-text">关于时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OI题目介绍"><span class="toc-number">1.3.</span> <span class="toc-text">OI题目介绍</span></a></li></ol></li></ol>
-    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -849,8 +719,6 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
-    
-        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
