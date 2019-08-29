@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>背包问题review · Dylan Li&#39;s Blog</title>
+    <title>KMP学习 · Dylan Li&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >Dylan Li&#39;s Blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">背包问题review</a>
+                <a href="#" class="post-name">KMP学习</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            背包问题review
+            KMP学习
             <!-- 404 -->
             
         </h1>
@@ -266,12 +266,12 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">356</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">276</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/08/02</span>
+                    <span class="post-intro-time">2019/08/29</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -395,20 +395,14 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>动规被丢了太久了… 蒟蒻连后面拓扑和动规结合都做不来，只好复习一下了emmm</p>
-<h3 id="01背包Luogu1048"><a href="#01背包Luogu1048" class="headerlink" title="01背包Luogu1048"></a>01背包Luogu1048</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span> T,M,i,j;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;T&gt;&gt;M;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=M;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;w[i],&amp;v[i]);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=M;i++)<span class="comment">//</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;=T;j++)<span class="comment">//Ȩֵ+ </span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(j&lt;w[i])</span><br><span class="line">			&#123;</span><br><span class="line">				s[i][j]=s[i<span class="number">-1</span>][j];</span><br><span class="line">			&#125;<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				s[i][j] = max(s[i<span class="number">-1</span>][j],s[i<span class="number">-1</span>][j-w[i]]+v[i]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,s[M][T]);</span><br></pre></td></tr></table></figure>
+        <p>//感谢 <a href="https://blog.csdn.net/v_july_v/article/details/7041827" target="_blank" rel="noopener">从头到尾彻底理解KMP</a> (大部分都是从这儿抄来的…) 仅供学习参考</p>
+<p>第一种：暴力匹配</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ViolentMatch</span><span class="params">(<span class="keyword">char</span>* s, <span class="keyword">char</span>* p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sLen = <span class="built_in">strlen</span>(s);</span><br><span class="line">	<span class="keyword">int</span> pLen = <span class="built_in">strlen</span>(p);</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (i &lt; sLen &amp;&amp; j &lt; pLen)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (s[i] == p[j])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//①如果当前字符匹配成功（即S[i] == P[j]），则i++，j++    </span></span><br><span class="line">			i++;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//②如果失配（即S[i]! = P[j]），令i = i - (j - 1)，j = 0    </span></span><br><span class="line">			i = i - j + <span class="number">1</span>;</span><br><span class="line">			j = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//匹配成功，返回模式串p在文本串s中的位置，否则返回-1</span></span><br><span class="line">	<span class="keyword">if</span> (j == pLen)</span><br><span class="line">		<span class="keyword">return</span> i - j;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>然后可以再压缩一下</p>
-<blockquote>
-<p>一维内层循环要倒着来！不然会重复</p>
-</blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> T,M,i,j;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;T&gt;&gt;M;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=M;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;w[i],&amp;v[i]);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=M;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j=T;j&gt;=<span class="number">0</span>;j--)<span class="comment">//Ȩֵ+ </span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(j&gt;=w[i])</span><br><span class="line">			&#123;</span><br><span class="line">				s[j] = max(s[j],s[j-w[i]]+v[i]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,s[T]);</span><br></pre></td></tr></table></figure>
+<p>Next 数组：</p>
+<p>KMP实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">KmpSearch</span><span class="params">(<span class="keyword">char</span>* s, <span class="keyword">char</span>* p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> sLen = <span class="built_in">strlen</span>(s);</span><br><span class="line">	<span class="keyword">int</span> pLen = <span class="built_in">strlen</span>(p);</span><br><span class="line">	<span class="keyword">while</span> (i &lt; sLen &amp;&amp; j &lt; pLen)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//①如果j = -1，或者当前字符匹配成功（即S[i] == P[j]），都令i++，j++    </span></span><br><span class="line">		<span class="keyword">if</span> (j == <span class="number">-1</span> || s[i] == p[j])</span><br><span class="line">		&#123;</span><br><span class="line">			i++;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//②如果j != -1，且当前字符匹配失败（即S[i] != P[j]），则令 i 不变，j = next[j]    </span></span><br><span class="line">			<span class="comment">//next[j]即为j所对应的next值      </span></span><br><span class="line">			j = next[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (j == pLen)</span><br><span class="line">		<span class="keyword">return</span> i - j;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>之前有些学习时候的图片不知道存哪儿了….当时是老师一个个在黑板上画的分析，找到了放上来</p>
-<h3 id="完全背包-P1883"><a href="#完全背包-P1883" class="headerlink" title="完全背包 P1883"></a>完全背包 P1883</h3><p>这种就是一个字 拆！<br>但是一个个地算时间就太慢了….</p>
-<p>原理：多重背包二进制拆分</p>
-<p>把多重背包用二进制拆分，拆分后的能表示它所能表示的任意数字.<br>比如：7 = 1 + 2 + 4， 13 = 1 + 4 + 8；<br>然后把价值和空间对应也更新，然后用01背包直接写就行，复杂度：n∗m∗log(num).</p>
-<p><img src="https://s2.ax1x.com/2019/08/23/mrRQc6.png" alt="示例代码"></p>
 
     </article>
     <!-- license  -->
@@ -520,7 +514,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#01背包Luogu1048"><span class="toc-number">1.</span> <span class="toc-text">01背包Luogu1048</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完全背包-P1883"><span class="toc-number">2.</span> <span class="toc-text">完全背包 P1883</span></a></li></ol>
+        
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
