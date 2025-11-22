@@ -1,0 +1,67 @@
+baseURL: https://dylanli-hang.github.io/
+title: Dylan's Blog
+theme: "PaperMod"
+languageCode: "en-us"
+
+pagination:
+  pagerSize: 10
+
+# -------------------------------------------------------------------------------------
+# Enable Internal Search (This creates index.json for the search bar)
+# -------------------------------------------------------------------------------------
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+# -------------------------------------------------------------------------------------
+# Navigation Menu
+# -------------------------------------------------------------------------------------
+menu:
+  main:
+    - identifier: blogs
+      name: Blogs
+      url: /blogs/
+      weight: 10
+#     - identifier: tags
+#       name: Tags
+#       url: /tags/
+#       weight: 20
+#     - identifier: search
+#       name: Search
+#       url: /search/
+#       weight: 30
+
+# -------------------------------------------------------------------------------------
+# Visual & Theme Settings
+# -------------------------------------------------------------------------------------
+params:
+  defaultTheme: auto          # auto, dark, or light
+  
+  # Clean Visual Toggles
+  ShowReadingTime: true
+  ShowWordCount: true
+  ShowShareButtons: false     # Disabled (Clean look)
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true   # Useful for tech blogs
+
+  # Homepage Profile (The text on your landing page)
+  homeInfoParams:
+    Title: "Hello."
+    Content: "Welcome to my blog."
+
+  # Social Links (Delete if not needed)
+  socialIcons:
+    - name: github
+      url: "https://github.com/dylanli-hang"
+
+  # Internal Search Logic (Fuse.js)
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
